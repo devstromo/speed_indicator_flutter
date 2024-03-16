@@ -14,8 +14,8 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
     return Scaffold(
       body: Stack(
         children: [
-          const Center(
-            child: Placeholder(),
+          Center(
+            child: Text('Value ${_value.toInt()}'),
           ),
           Positioned(
             left: 0,
