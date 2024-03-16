@@ -1,3 +1,5 @@
-# speed_indicator_flutter
+# Speed Indicator Flutter
 
-A new Flutter project.
+Sample project in flutter of and speed indicator
+
+![Sample Image](sample.png "Speed Indicator")
