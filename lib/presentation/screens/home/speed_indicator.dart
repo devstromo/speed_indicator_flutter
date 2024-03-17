@@ -20,16 +20,16 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
       body: Stack(
         children: [
           Positioned(
-            left: size.width / 4,
-            top: size.height / 4,
+            left: 50,
+            right: size.width / 2,
+            bottom: kToolbarHeight,
             child: Transform.rotate(
-              angle: math.pi * _value / 200,
-              alignment: Alignment.center,
+              angle: angle,
+              alignment: Alignment.centerRight,
               child: Container(
-                width: 100,
-                height: 100,
+                width: 250,
+                height: 10,
                 color: Colors.blue,
-                child: Center(child: Text('Rotating')),
               ),
             ),
           ),
