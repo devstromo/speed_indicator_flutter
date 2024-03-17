@@ -16,6 +16,18 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
     return Scaffold(
       body: Stack(
         children: [
+          Padding(
+            padding: const EdgeInsets.all(
+              20,
+            ),
+            child: CustomPaint(
+              size: Size(
+                size.width,
+                size.height,
+              ),
+              painter: ExternalArcPainter(),
+            ),
+          ),
           Center(
             child: Text('Value ${_value.toInt()}'),
           ),
@@ -37,13 +49,6 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
               ),
             ),
           ),
-          CustomPaint(
-            size: Size(
-              size.width,
-              size.height,
-            ),
-            painter: ExternalArcPainter(),
-          )
         ],
       ),
     );
