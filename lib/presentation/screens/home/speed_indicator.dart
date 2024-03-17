@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:speed_indicator_flutter/presentation/widgets/external_arc_painter.dart';
+import 'package:speed_indicator_flutter/presentation/widgets/widgets.dart';
 
 class SpeedIndicator extends StatefulWidget {
   const SpeedIndicator({super.key});
@@ -16,6 +16,13 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
     return Scaffold(
       body: Stack(
         children: [
+          CustomPaint(
+            size: Size(
+              size.width,
+              size.height,
+            ),
+            painter: SpeedIndicatorPainter(),
+          ),
           Padding(
             padding: const EdgeInsets.all(
               20,
