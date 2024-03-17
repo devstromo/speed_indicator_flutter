@@ -1,17 +1,21 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 class ExternalArcPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
+    log('height ${size.height}');
+    log('width ${size.width}');
     final rect = Rect.fromLTRB(
       10,
       50,
       size.width - 10,
-      size.width,
+      size.width * .75,
     );
-    const startAngle = math.pi;
-    const sweepAngle = math.pi;
+    const startAngle = -math.pi * 1.83;
+    const sweepAngle = -math.pi * 1.35;
     const useCenter = false;
     final paint = Paint()
       ..color = Colors.red
