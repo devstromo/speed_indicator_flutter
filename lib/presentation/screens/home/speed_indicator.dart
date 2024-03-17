@@ -29,8 +29,9 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(
-                20,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20.0,
+                vertical: 10.0,
               ),
               child: CustomPaint(
                 size: Size(
@@ -48,7 +49,10 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
               right: 0,
               bottom: 10,
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8.0,
+                  vertical: 20.0,
+                ),
                 child: Slider(
                   value: _value,
                   min: 0.0,
