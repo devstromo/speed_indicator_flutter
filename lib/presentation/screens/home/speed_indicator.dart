@@ -21,7 +21,7 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
         child: Stack(
           children: [
             Positioned(
-              left: size.height * .3,
+              left: size.height * .25,
               right: size.width * .5,
               bottom: kToolbarHeight,
               child: SpeedIndicatorNeedle(
@@ -29,9 +29,9 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20.0,
-                vertical: 10.0,
+              padding: EdgeInsets.symmetric(
+                horizontal: size.width * .11,
+                vertical: 2.0,
               ),
               child: CustomPaint(
                 size: Size(
