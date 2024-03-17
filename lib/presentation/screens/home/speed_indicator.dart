@@ -29,7 +29,14 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
               child: Container(
                 width: 250,
                 height: 10,
-                color: Colors.blue,
+                decoration: BoxDecoration(
+                  color: const Color(0xFFc603fc).withOpacity(
+                    .5,
+                  ),
+                  borderRadius: BorderRadius.circular(
+                    50,
+                  ),
+                ),
               ),
             ),
           ),
