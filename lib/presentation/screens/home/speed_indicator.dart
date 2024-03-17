@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:speed_indicator_flutter/presentation/widgets/external_arc_painter.dart';
 
 class SpeedIndicator extends StatefulWidget {
   const SpeedIndicator({super.key});
@@ -11,6 +12,7 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
   double _value = 0.0;
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: Stack(
         children: [
@@ -35,6 +37,13 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
               ),
             ),
           ),
+          CustomPaint(
+            size: Size(
+              size.width,
+              size.height,
+            ),
+            painter: ExternalArcPainter(),
+          )
         ],
       ),
     );
