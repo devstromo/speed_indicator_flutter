@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
 import 'package:speed_indicator_flutter/presentation/widgets/widgets.dart';
 
 class SpeedIndicator extends StatefulWidget {
@@ -13,6 +14,8 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    // Calculate the rotation angle based on the slider value
+    final double angle = math.pi * _value / 200;
     return Scaffold(
       body: Stack(
         children: [
@@ -21,7 +24,9 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
               size.width,
               size.height,
             ),
-            painter: SpeedIndicatorPainter(),
+            painter: SpeedIndicatorPainter(
+              angle: angle,
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(
