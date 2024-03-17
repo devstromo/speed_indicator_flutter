@@ -10,7 +10,7 @@ class SpeedIndicator extends StatefulWidget {
 }
 
 class _SpeedIndicatorState extends State<SpeedIndicator> {
-  double _value = 0.0;
+  double _value = 100.0;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -21,8 +21,8 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
         child: Stack(
           children: [
             Positioned(
-              left: 50,
-              right: size.width / 2,
+              left: size.height * .3,
+              right: size.width * .5,
               bottom: kToolbarHeight,
               child: SpeedIndicatorNeedle(
                 angle: angle,

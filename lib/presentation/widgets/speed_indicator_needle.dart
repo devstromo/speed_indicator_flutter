@@ -12,7 +12,7 @@ class SpeedIndicatorNeedle extends StatelessWidget {
       angle: angle,
       alignment: Alignment.centerRight,
       child: Container(
-        width: 250,
+        width: double.infinity,
         height: 8,
         decoration: BoxDecoration(
           color: const Color(0xFFc603fc).withOpacity(
