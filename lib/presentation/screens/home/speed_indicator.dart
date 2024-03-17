@@ -19,13 +19,18 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
     return Scaffold(
       body: Stack(
         children: [
-          CustomPaint(
-            size: Size(
-              size.width,
-              size.height,
-            ),
-            painter: SpeedIndicatorPainter(
-              angle: angle,
+          Positioned(
+            left: size.width / 4,
+            top: size.height / 4,
+            child: Transform.rotate(
+              angle: math.pi * _value / 200,
+              alignment: Alignment.center,
+              child: Container(
+                width: 100,
+                height: 100,
+                color: Colors.blue,
+                child: Center(child: Text('Rotating')),
+              ),
             ),
           ),
           Padding(
