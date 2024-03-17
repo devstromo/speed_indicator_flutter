@@ -9,13 +9,13 @@ class ExternalArcPainter extends CustomPainter {
     log('height ${size.height}');
     log('width ${size.width}');
     final rect = Rect.fromLTRB(
-      10,
-      50,
-      size.width - 10,
-      size.width * .75,
+      0,
+      0,
+      size.width,
+      size.height * 1.4,
     );
-    const startAngle = -math.pi * 1.83;
-    const sweepAngle = -math.pi * 1.35;
+    const startAngle = -math.pi * 1.85;
+    const sweepAngle = -math.pi * 1.30;
     const useCenter = false;
     final paint = Paint()
       ..color = Colors.red
