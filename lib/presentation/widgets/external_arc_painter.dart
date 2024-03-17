@@ -4,7 +4,12 @@ import 'dart:math' as math;
 class ExternalArcPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    const rect = Rect.fromLTRB(0, 25, 450, 150);
+    final rect = Rect.fromLTRB(
+      10,
+      50,
+      size.width - 10,
+      size.width,
+    );
     const startAngle = math.pi;
     const sweepAngle = math.pi;
     const useCenter = false;
