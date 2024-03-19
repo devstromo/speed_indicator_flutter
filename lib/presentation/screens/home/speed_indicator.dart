@@ -19,7 +19,7 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
     // Calculate the rotation angle based on the slider value
     // final double angle = math.pi * _value / 200;
 
-    final double angle = (11 * math.pi / 6) - (_value * (7 * math.pi / 6) / 220);
+    final double angle = (math.pi * 2.05) - (_value * (math.pi / 6) / 220);
     log('Angle value: $angle');
     return Scaffold(
       body: SafeArea(
