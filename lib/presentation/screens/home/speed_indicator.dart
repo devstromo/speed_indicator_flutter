@@ -15,7 +15,16 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     // Calculate the rotation angle based on the slider value
-    final double angle = math.pi * _value / 200;
+    // final double angle = math.pi * _value / 200;
+    // Updated formula for the rotation angle based on the slider value
+    // final double angle = (7 * math.pi / 6) + (_value * (4 * math.pi / (6 * 220)));
+
+    // Calculate the angle based on the value
+    final double startAngleRadians = 7 * math.pi / 6; // 210 degrees in radians
+    final double endAngleRadians = 0; // 0 degrees in radians
+    // Calculate the linear interpolation of the angle based on the _value
+    final double angle = startAngleRadians +
+        (endAngleRadians - startAngleRadians) * (_value / 220);
     return Scaffold(
       body: SafeArea(
         child: Stack(
