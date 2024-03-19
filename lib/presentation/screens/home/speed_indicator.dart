@@ -10,7 +10,7 @@ class SpeedIndicator extends StatefulWidget {
 }
 
 class _SpeedIndicatorState extends State<SpeedIndicator> {
-  double _value = 100.0;
+  double _value = 0.0;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -20,11 +20,12 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
     // final double angle = (7 * math.pi / 6) + (_value * (4 * math.pi / (6 * 220)));
 
     // Calculate the angle based on the value
-    final double startAngleRadians = 7 * math.pi / 6; // 210 degrees in radians
-    final double endAngleRadians = 0; // 0 degrees in radians
-    // Calculate the linear interpolation of the angle based on the _value
-    final double angle = startAngleRadians +
-        (endAngleRadians - startAngleRadians) * (_value / 220);
+    // final double startAngleRadians = 7 * math.pi / 6; // 210 degrees in radians
+    // final double endAngleRadians = 0; // 0 degrees in radians
+    // // Calculate the linear interpolation of the angle based on the _value
+    // final double angle = startAngleRadians +
+    //     (endAngleRadians - startAngleRadians) * (_value / 220);
+    final double angle = (7 * math.pi / 6) + (_value * (7 * math.pi / 6) / 220);
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -34,7 +35,7 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
               right: size.width * .5,
               bottom: kToolbarHeight,
               child: SpeedIndicatorNeedle(
-                angle: angle,
+                angle: -angle,
               ),
             ),
             Padding(
