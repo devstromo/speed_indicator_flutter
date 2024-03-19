@@ -6,8 +6,6 @@ import 'dart:math' as math;
 class ExternalArcPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    log('height ${size.height}');
-    log('width ${size.width}');
     final rect = Rect.fromLTRB(
       0,
       0,
