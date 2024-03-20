@@ -38,7 +38,7 @@ class ExternalArcPainter extends CustomPainter {
       // Calculating the position for the text
       final offset = Offset(
         radius * math.cos(numberAngle) + (size.width * .5),
-        radius * math.sin(numberAngle) + (size.height * .5),
+        radius * math.sin(numberAngle) + (size.height * .7),
       );
 
       // Offset adjustment might be necessary to properly position the numbers
