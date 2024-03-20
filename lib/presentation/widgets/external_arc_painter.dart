@@ -19,7 +19,7 @@ class ExternalArcPainter extends CustomPainter {
       ..strokeWidth = 2;
     canvas.drawArc(rect, startAngle, sweepAngle, useCenter, paint);
     // Text painting code starts here
-    final textStyle = TextStyle(
+    const textStyle = TextStyle(
       color: Colors.black,
       fontSize: 20,
       fontWeight: FontWeight.bold,
