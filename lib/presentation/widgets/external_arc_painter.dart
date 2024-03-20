@@ -53,8 +53,8 @@ class ExternalArcPainter extends CustomPainter {
 
       textPainter.layout();
       final textOffset = Offset(
-        offset.dx - (textPainter.width / 2),
-        offset.dy - (textPainter.height / 2),
+        offset.dx - (textPainter.width * .5),
+        offset.dy - (textPainter.height * .5),
       );
 
       // Draw the text on the canvas
