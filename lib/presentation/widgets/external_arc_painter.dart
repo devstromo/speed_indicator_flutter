@@ -26,7 +26,7 @@ class ExternalArcPainter extends CustomPainter {
     );
 
     // The radius might need to be adjusted depending on the size of your canvas
-    final radius = size.width * .4;
+    final radius = size.width * .35;
 
     int marker = 220;
     // Start drawing numbers from 0 to 220 at intervals of 20 km/h
@@ -38,7 +38,7 @@ class ExternalArcPainter extends CustomPainter {
       // Calculating the position for the text
       final offset = Offset(
         radius * math.cos(numberAngle) + (size.width * .5),
-        radius * math.sin(numberAngle) + (size.height * .7),
+        radius * math.sin(numberAngle) + (size.height * .68),
       );
 
       // Offset adjustment might be necessary to properly position the numbers
