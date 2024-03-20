@@ -28,6 +28,7 @@ class ExternalArcPainter extends CustomPainter {
     // The radius might need to be adjusted depending on the size of your canvas
     final radius = size.width / 2;
 
+    int marker = 220;
     // Start drawing numbers from 0 to 220 at intervals of 20 km/h
     for (int i = 0; i <= 220; i += 20) {
       // Angle calculation for the numbers must be adjusted to match your arc
@@ -42,7 +43,7 @@ class ExternalArcPainter extends CustomPainter {
 
       // Offset adjustment might be necessary to properly position the numbers
       final textSpan = TextSpan(
-        text: '$i',
+        text: '$marker',
         style: textStyle,
       );
       final textPainter = TextPainter(
@@ -58,6 +59,7 @@ class ExternalArcPainter extends CustomPainter {
 
       // Draw the text on the canvas
       textPainter.paint(canvas, textOffset);
+      marker -= 20;
     }
   }
 
