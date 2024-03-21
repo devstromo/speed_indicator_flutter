@@ -18,7 +18,7 @@ class SpeedNumbersPainter extends CustomPainter {
 
     // The radius might need to be adjusted depending on the size of your canvas
     final radius = size.width * .4;
-    final lineLength = size.width * 0.1; // Adjust the length as needed
+    final lineLength = size.width * 0.03; // Adjust the length as needed
     final innerRadius =
         radius - lineLength; // This will be the start of the line
 
