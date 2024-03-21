@@ -17,7 +17,6 @@ class SpeedLinesPainter extends CustomPainter {
 
     final dxOffsetDelta = (size.width * .5);
     final dyOffsetDelta = (size.height * .68);
-    int marker = 220;
 
     // Draw lines and numbers together in one loop
     for (int i = 0; i <= 220; i += 20) {
@@ -34,8 +33,6 @@ class SpeedLinesPainter extends CustomPainter {
 
       // Draw the line on the canvas
       canvas.drawLine(lineStartOffset, lineEndOffset, linePaint);
-
-      marker -= 20; // Decrease marker for next number
     }
   }
 
