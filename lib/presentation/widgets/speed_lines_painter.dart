@@ -6,53 +6,73 @@ class SpeedLinesPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     const startAngle = -math.pi * 1.85;
     const sweepAngle = -math.pi * 1.30;
-    final linePaint = Paint()
+    final majorLinePaint = Paint()
       ..color = Colors.black
       ..strokeWidth = 2;
-
-    final boldLinePaint = Paint()
+    final middleLinePaint = Paint()
       ..color = Colors.black
-      ..strokeWidth = 4; // Make the mid-value lines bolder
+      ..strokeWidth = 4; // Bolder for the middle lines
+    final fineLinePaint = Paint()
+      ..color = Colors.black
+      ..strokeWidth = 1; // Finer for the minor increment lines
 
     final radius = size.width * .4;
-    final lineLength = size.width * 0.03; // Length for major increment lines
-    final shortLineLength = lineLength * 0.6; // Shorter length for mid-value lines
-    final innerRadius = radius - lineLength; // Start of the major increment lines
-    final innerShortRadius = radius - shortLineLength; // Start of the mid-value lines
+    final majorLineLength =
+        size.width * 0.03; // Length for major increment lines
+    final middleLineLength =
+        majorLineLength * 0.75; // Length for middle increment lines
+    final fineLineLength =
+        majorLineLength * 0.5; // Length for minor increment lines
 
     final dxOffsetDelta = (size.width * .5);
     final dyOffsetDelta = (size.height * .68);
 
     // Draw major increment lines at every 20 units
     for (int i = 0; i <= 220; i += 20) {
-      final numberAngle = startAngle + (sweepAngle / 220) * i;
-
-      final lineStartOffset = Offset(
-        innerRadius * math.cos(numberAngle) + dxOffsetDelta,
-        innerRadius * math.sin(numberAngle) + dyOffsetDelta,
+      final angle = startAngle + (sweepAngle / 220) * i;
+      final startOffset = Offset(
+        (radius - majorLineLength) * math.cos(angle) + dxOffsetDelta,
+        (radius - majorLineLength) * math.sin(angle) + dyOffsetDelta,
       );
-      final lineEndOffset = Offset(
-        (innerRadius + lineLength) * math.cos(numberAngle) + dxOffsetDelta,
-        (innerRadius + lineLength) * math.sin(numberAngle) + dyOffsetDelta,
+      final endOffset = Offset(
+        radius * math.cos(angle) + dxOffsetDelta,
+        radius * math.sin(angle) + dyOffsetDelta,
       );
 
-      canvas.drawLine(lineStartOffset, lineEndOffset, linePaint);
+      canvas.drawLine(startOffset, endOffset, majorLinePaint);
     }
 
-    // Draw shorter, bolder lines at every mid-value between the major increments
-    for (int i = 10; i < 220; i += 20) { // Starting from 10 and not including 220
-      final midValueAngle = startAngle + (sweepAngle / 220) * i;
-
-      final shortLineStartOffset = Offset(
-        innerShortRadius * math.cos(midValueAngle) + dxOffsetDelta,
-        innerShortRadius * math.sin(midValueAngle) + dyOffsetDelta,
+    // Draw middle increment lines (like 10, 30, etc.)
+    for (int i = 10; i < 220; i += 20) {
+      final angle = startAngle + (sweepAngle / 220) * i;
+      final startOffset = Offset(
+        (radius - middleLineLength) * math.cos(angle) + dxOffsetDelta,
+        (radius - middleLineLength) * math.sin(angle) + dyOffsetDelta,
       );
-      final shortLineEndOffset = Offset(
-        (innerShortRadius + shortLineLength) * math.cos(midValueAngle) + dxOffsetDelta,
-        (innerShortRadius + shortLineLength) * math.sin(midValueAngle) + dyOffsetDelta,
+      final endOffset = Offset(
+        radius * math.cos(angle) + dxOffsetDelta,
+        radius * math.sin(angle) + dyOffsetDelta,
       );
 
-      canvas.drawLine(shortLineStartOffset, shortLineEndOffset, boldLinePaint);
+      canvas.drawLine(startOffset, endOffset, middleLinePaint);
+    }
+
+    // Draw fine increment lines (like 2, 4, 6, etc.)
+    for (int i = 2; i < 220; i += 2) {
+      // Skip drawing at major and middle points (multiples of 10)
+      if (i % 10 == 0) continue;
+
+      final angle = startAngle + (sweepAngle / 220) * i;
+      final startOffset = Offset(
+        (radius - fineLineLength) * math.cos(angle) + dxOffsetDelta,
+        (radius - fineLineLength) * math.sin(angle) + dyOffsetDelta,
+      );
+      final endOffset = Offset(
+        radius * math.cos(angle) + dxOffsetDelta,
+        radius * math.sin(angle) + dyOffsetDelta,
+      );
+
+      canvas.drawLine(startOffset, endOffset, fineLinePaint);
     }
   }
 
