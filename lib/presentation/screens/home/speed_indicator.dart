@@ -29,7 +29,7 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
             ),
             Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: size.width * .11,
+                horizontal: size.width * .15,
                 vertical: 2.0,
               ),
               child: CustomPaint(
