@@ -10,15 +10,20 @@ class SpeedLinesPainter extends CustomPainter {
       ..color = Colors.black
       ..strokeWidth = 2;
 
+    final boldLinePaint = Paint()
+      ..color = Colors.black
+      ..strokeWidth = 4; // Make the mid-value lines bolder
+
     final radius = size.width * .4;
-    final lineLength = size.width * 0.03; // Adjust the length as needed
-    final innerRadius =
-        radius - lineLength; // This will be the start of the line
+    final lineLength = size.width * 0.03; // Length for major increment lines
+    final shortLineLength = lineLength * 0.6; // Shorter length for mid-value lines
+    final innerRadius = radius - lineLength; // Start of the major increment lines
+    final innerShortRadius = radius - shortLineLength; // Start of the mid-value lines
 
     final dxOffsetDelta = (size.width * .5);
     final dyOffsetDelta = (size.height * .68);
 
-    // Draw lines and numbers together in one loop
+    // Draw major increment lines at every 20 units
     for (int i = 0; i <= 220; i += 20) {
       final numberAngle = startAngle + (sweepAngle / 220) * i;
 
@@ -31,8 +36,23 @@ class SpeedLinesPainter extends CustomPainter {
         (innerRadius + lineLength) * math.sin(numberAngle) + dyOffsetDelta,
       );
 
-      // Draw the line on the canvas
       canvas.drawLine(lineStartOffset, lineEndOffset, linePaint);
+    }
+
+    // Draw shorter, bolder lines at every mid-value between the major increments
+    for (int i = 10; i < 220; i += 20) { // Starting from 10 and not including 220
+      final midValueAngle = startAngle + (sweepAngle / 220) * i;
+
+      final shortLineStartOffset = Offset(
+        innerShortRadius * math.cos(midValueAngle) + dxOffsetDelta,
+        innerShortRadius * math.sin(midValueAngle) + dyOffsetDelta,
+      );
+      final shortLineEndOffset = Offset(
+        (innerShortRadius + shortLineLength) * math.cos(midValueAngle) + dxOffsetDelta,
+        (innerShortRadius + shortLineLength) * math.sin(midValueAngle) + dyOffsetDelta,
+      );
+
+      canvas.drawLine(shortLineStartOffset, shortLineEndOffset, boldLinePaint);
     }
   }
 
