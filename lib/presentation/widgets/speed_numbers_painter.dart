@@ -28,22 +28,22 @@ class SpeedNumbersPainter extends CustomPainter {
       // Angle calculation for the numbers and lines
       final numberAngle = startAngle + (sweepAngle / 220) * i;
 
+      final dxOffsetDelta = (size.width * .5);
+      final dyOffsetDelta = (size.height * .68);
       // Calculating the position for the text
       final textOffset = Offset(
-        radius * math.cos(numberAngle) + (size.width * .5),
-        radius * math.sin(numberAngle) + (size.height * .68),
+        radius * math.cos(numberAngle) + dxOffsetDelta,
+        radius * math.sin(numberAngle) + dyOffsetDelta,
       );
 
-      final dxOffsetDelta = (size.width * .5);
       // Calculating the start and end points for the lines
       final lineStartOffset = Offset(
-        innerRadius * math.cos(numberAngle) + (size.width * .5),
-        innerRadius * math.sin(numberAngle) + (size.height * .68),
+        innerRadius * math.cos(numberAngle) + dxOffsetDelta,
+        innerRadius * math.sin(numberAngle) + dyOffsetDelta,
       );
       final lineEndOffset = Offset(
-        (innerRadius + lineLength) * math.cos(numberAngle) + (size.width * .5),
-        (innerRadius + lineLength) * math.sin(numberAngle) +
-            (size.height * .68),
+        (innerRadius + lineLength) * math.cos(numberAngle) + dxOffsetDelta,
+        (innerRadius + lineLength) * math.sin(numberAngle) + dyOffsetDelta,
       );
 
       // Draw the line on the canvas
