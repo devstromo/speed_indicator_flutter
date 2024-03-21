@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:speed_indicator_flutter/presentation/widgets/speed_lines_painter.dart';
 import 'package:speed_indicator_flutter/presentation/widgets/speed_numbers_painter.dart';
 import 'dart:math' as math;
 import 'package:speed_indicator_flutter/presentation/widgets/widgets.dart';
@@ -26,6 +27,19 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
               bottom: kToolbarHeight,
               child: SpeedIndicatorNeedle(
                 angle: -angle,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: size.width * .15,
+                vertical: 30.0,
+              ),
+              child: CustomPaint(
+                size: Size(
+                  size.width,
+                  size.height,
+                ),
+                painter: SpeedLinesPainter(),
               ),
             ),
             Padding(
