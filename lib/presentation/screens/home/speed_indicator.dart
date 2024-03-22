@@ -12,11 +12,11 @@ class SpeedIndicator extends StatefulWidget {
 }
 
 class _SpeedIndicatorState extends State<SpeedIndicator> {
-  double _value = 0.0;
+  double _value = 220.0;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final double angle = (math.pi * 2.05) - (_value * (math.pi * 1.21) / 220);
+    final double angle = (math.pi * 2.17) /** ok this first part */ - (_value * (math.pi * 1.34) / 220);
     const verticalPadding = 2.0;
     return Scaffold(
       body: SafeArea(
