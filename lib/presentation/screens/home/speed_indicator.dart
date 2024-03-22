@@ -17,13 +17,13 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final double angle = (math.pi * 2.05) - (_value * (math.pi * 1.21) / 220);
-    final verticalPadding = 2.0;
+    const verticalPadding = 2.0;
     return Scaffold(
       body: SafeArea(
         child: Stack(
           children: [
             Positioned(
-              left: size.height * .25,
+              left: size.height * .35, // needle size
               right: size.width * .5,
               bottom: kToolbarHeight,
               child: SpeedIndicatorNeedle(
