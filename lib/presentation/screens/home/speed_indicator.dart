@@ -84,7 +84,7 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
                 child: Slider(
                   value: _value,
                   min: 0.0,
-                  max: 200.0,
+                  max: 220.0,
                   onChanged: (value) {
                     setState(() {
                       _value = value;
