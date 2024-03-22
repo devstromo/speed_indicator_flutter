@@ -25,7 +25,7 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
             Positioned(
               left: size.height * .35, // needle size
               right: size.width * .5,
-              bottom: kToolbarHeight,
+              bottom: kToolbarHeight + 60,
               child: SpeedIndicatorNeedle(
                 angle: -angle,
               ),
