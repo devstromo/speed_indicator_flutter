@@ -23,7 +23,7 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
         child: Stack(
           children: [
             Positioned(
-              left: size.height * .35, // needle size
+              left: size.height * .45, // needle size
               right: size.width * .5,
               bottom: kToolbarHeight + 60,
               child: SpeedIndicatorNeedle(
