@@ -32,8 +32,7 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final double angle = (math.pi * 2.17) /** ok this first part */ -
-        (_value * (math.pi * 1.34) / 220);
+    final double angle = (math.pi * 2.17) - (_value * (math.pi * 1.34) / 220);
     final double leftFactor = _calculateLeftFactor(_value);
     const verticalPadding = 2.0;
     return Scaffold(
