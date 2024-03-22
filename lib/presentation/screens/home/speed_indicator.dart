@@ -17,6 +17,7 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final double angle = (math.pi * 2.05) - (_value * (math.pi * 1.21) / 220);
+    final verticalPadding = 2.0;
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -32,7 +33,7 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
             Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: size.width * .15,
-                vertical: 30.0,
+                vertical: verticalPadding,
               ),
               child: CustomPaint(
                 size: Size(
@@ -45,7 +46,7 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
             Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: size.width * .15,
-                vertical: 30.0,
+                vertical: verticalPadding,
               ),
               child: CustomPaint(
                 size: Size(
@@ -57,8 +58,8 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
             ),
             Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: size.width * .15,
-                vertical: 2.0,
+                horizontal: size.width * .2,
+                vertical: 23.0,
               ),
               child: CustomPaint(
                 size: Size(
