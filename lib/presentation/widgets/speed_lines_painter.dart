@@ -8,13 +8,13 @@ class SpeedLinesPainter extends CustomPainter {
     const sweepAngle = -math.pi * 1.30;
     final majorLinePaint = Paint()
       ..color = Colors.black
-      ..strokeWidth = 2;
+      ..strokeWidth = 4;
     final middleLinePaint = Paint()
       ..color = Colors.black
-      ..strokeWidth = 4; // Bolder for the middle lines
+      ..strokeWidth = 2;
     final fineLinePaint = Paint()
       ..color = Colors.black
-      ..strokeWidth = 1; // Finer for the minor increment lines
+      ..strokeWidth = 1;
 
     final radius = size.width * .4;
     final majorLineLength =
