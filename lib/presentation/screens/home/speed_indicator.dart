@@ -83,8 +83,12 @@ class SpeedIndicator extends ConsumerWidget {
                 painter: ExternalArcPainter(),
               ),
             ),
-            Center(
-              child: Text('Value ${_value.toInt()}'),
+            randomNames$.when(
+              data: (data) => Center(
+                child: Text('$data'),
+              ),
+              error: (error, stackTrace) => Text('Error $error'),
+              loading: () => const Center(child: CircularProgressIndicator()),
             ),
           ],
         ),
