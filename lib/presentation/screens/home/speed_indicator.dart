@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:speed_indicator_flutter/presentation/provider/numbers_generator_provider.dart';
 import 'package:speed_indicator_flutter/presentation/widgets/speed_lines_painter.dart';
 import 'package:speed_indicator_flutter/presentation/widgets/speed_numbers_painter.dart';
 import 'dart:math' as math;
 import 'package:speed_indicator_flutter/presentation/widgets/widgets.dart';
 
 class SpeedIndicator extends ConsumerWidget {
- SpeedIndicator({super.key});
+  SpeedIndicator({super.key});
   var _value = 220.0;
   final midValue = 110.0;
   final minFactor = 0.40;
@@ -30,6 +31,7 @@ class SpeedIndicator extends ConsumerWidget {
     final double angle = (math.pi * 2.17) - (_value * (math.pi * 1.34) / 220);
     final double leftFactor = _calculateLeftFactor(_value);
     const verticalPadding = 2.0;
+    final randomNames$ = ref.watch(numbersStreamProvider);
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -83,27 +85,6 @@ class SpeedIndicator extends ConsumerWidget {
             ),
             Center(
               child: Text('Value ${_value.toInt()}'),
-            ),
-            Positioned(
-              left: 0,
-              right: 0,
-              bottom: 10,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 8.0,
-                  vertical: 20.0,
-                ),
-                child: Slider(
-                  value: _value,
-                  min: 0.0,
-                  max: 220.0,
-                  onChanged: (value) {
-                    // setState(() {
-                    //   _value = value;
-                    // });
-                  },
-                ),
-              ),
             ),
           ],
         ),
