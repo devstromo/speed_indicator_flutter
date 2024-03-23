@@ -9,8 +9,7 @@ import 'dart:math' as math;
 import 'package:speed_indicator_flutter/presentation/widgets/widgets.dart';
 
 class SpeedIndicator extends ConsumerWidget {
-  SpeedIndicator({super.key});
-  var _value = 120.0;
+  const SpeedIndicator({super.key});
   final midValue = 110.0;
   final minFactor = 0.40;
   final maxFactor = 0.45;
@@ -35,8 +34,6 @@ class SpeedIndicator extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final size = MediaQuery.of(context).size;
-    final double angle = (math.pi * 2.17) - (_value * (math.pi * 1.34) / 220);
-    final double leftFactor = _calculateLeftFactor(_value.toInt());
     const verticalPadding = 2.0;
     final randomNames$ = ref.watch(numbersStreamProvider);
     return Scaffold(
