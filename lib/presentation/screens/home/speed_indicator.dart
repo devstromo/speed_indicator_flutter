@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:speed_indicator_flutter/presentation/provider/numbers_generator_provider.dart';
@@ -8,12 +10,12 @@ import 'package:speed_indicator_flutter/presentation/widgets/widgets.dart';
 
 class SpeedIndicator extends ConsumerWidget {
   SpeedIndicator({super.key});
-  var _value = 220.0;
+  var _value = 120.0;
   final midValue = 110.0;
   final minFactor = 0.40;
   final maxFactor = 0.45;
 
-  double _calculateLeftFactor(double value) {
+  double _calculateLeftFactor(int value) {
     if (value <= midValue) {
       // Calculate factor for values from 0 to 110
       double slope = (maxFactor - minFactor) / midValue;
@@ -25,24 +27,34 @@ class SpeedIndicator extends ConsumerWidget {
     }
   }
 
+  double _calculateAngle(int value) {
+    log('Value $value');
+    return (math.pi * 2.17) - (value * (math.pi * 1.34) / 220);
+  }
+
   @override
   Widget build(BuildContext context, ref) {
     final size = MediaQuery.of(context).size;
     final double angle = (math.pi * 2.17) - (_value * (math.pi * 1.34) / 220);
-    final double leftFactor = _calculateLeftFactor(_value);
+    final double leftFactor = _calculateLeftFactor(_value.toInt());
     const verticalPadding = 2.0;
     final randomNames$ = ref.watch(numbersStreamProvider);
     return Scaffold(
       body: SafeArea(
         child: Stack(
           children: [
-            Positioned(
-              left: size.height * leftFactor, // needle size .40 in borders
-              right: size.width * .5,
-              bottom: kToolbarHeight + 60,
-              child: SpeedIndicatorNeedle(
-                angle: -angle,
+            randomNames$.when(
+              data: (data) => Positioned(
+                left: size.height *
+                    _calculateLeftFactor(data), // needle size .40 in borders
+                right: size.width * .5,
+                bottom: kToolbarHeight + 60,
+                child: SpeedIndicatorNeedle(
+                  angle: -_calculateAngle(data),
+                ),
               ),
+              error: (error, stackTrace) => Text('Error $error'),
+              loading: () => const Center(child: CircularProgressIndicator()),
             ),
             Padding(
               padding: EdgeInsets.symmetric(
@@ -82,13 +94,6 @@ class SpeedIndicator extends ConsumerWidget {
                 ),
                 painter: ExternalArcPainter(),
               ),
-            ),
-            randomNames$.when(
-              data: (data) => Center(
-                child: Text('$data'),
-              ),
-              error: (error, stackTrace) => Text('Error $error'),
-              loading: () => const Center(child: CircularProgressIndicator()),
             ),
           ],
         ),
