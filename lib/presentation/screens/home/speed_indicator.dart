@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:speed_indicator_flutter/presentation/widgets/speed_lines_painter.dart';
 import 'package:speed_indicator_flutter/presentation/widgets/speed_numbers_painter.dart';
 import 'dart:math' as math;
 import 'package:speed_indicator_flutter/presentation/widgets/widgets.dart';
 
-class SpeedIndicator extends StatefulWidget {
-  const SpeedIndicator({super.key});
+// class SpeedIndicator extends StatefulWidget {
+//   const SpeedIndicator({super.key});
 
-  @override
-  State<SpeedIndicator> createState() => _SpeedIndicatorState();
-}
+//   @override
+//   State<SpeedIndicator> createState() => _SpeedIndicatorState();
+// }
 
-class _SpeedIndicatorState extends State<SpeedIndicator> {
-  double _value = 220.0;
+class SpeedIndicator extends ConsumerWidget {
+ SpeedIndicator({super.key});
+  var _value = 220.0;
   final midValue = 110.0;
   final minFactor = 0.40;
   final maxFactor = 0.45;
@@ -30,7 +32,7 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     final size = MediaQuery.of(context).size;
     final double angle = (math.pi * 2.17) - (_value * (math.pi * 1.34) / 220);
     final double leftFactor = _calculateLeftFactor(_value);
@@ -103,9 +105,9 @@ class _SpeedIndicatorState extends State<SpeedIndicator> {
                   min: 0.0,
                   max: 220.0,
                   onChanged: (value) {
-                    setState(() {
-                      _value = value;
-                    });
+                    // setState(() {
+                    //   _value = value;
+                    // });
                   },
                 ),
               ),
