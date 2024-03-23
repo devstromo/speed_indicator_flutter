@@ -5,13 +5,6 @@ import 'package:speed_indicator_flutter/presentation/widgets/speed_numbers_paint
 import 'dart:math' as math;
 import 'package:speed_indicator_flutter/presentation/widgets/widgets.dart';
 
-// class SpeedIndicator extends StatefulWidget {
-//   const SpeedIndicator({super.key});
-
-//   @override
-//   State<SpeedIndicator> createState() => _SpeedIndicatorState();
-// }
-
 class SpeedIndicator extends ConsumerWidget {
  SpeedIndicator({super.key});
   var _value = 220.0;
