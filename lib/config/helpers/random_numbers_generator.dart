@@ -8,4 +8,13 @@ class RandomGenerator {
   static int getRandomNumber() {
     return min + _random.nextInt((max + 1) - min);
   }
+
+  static Stream<int> randomNumberStream() {
+    return Stream.periodic(
+        const Duration(
+          seconds: 2,
+        ), (i) {
+      return getRandomNumber();
+    });
+  }
 }
