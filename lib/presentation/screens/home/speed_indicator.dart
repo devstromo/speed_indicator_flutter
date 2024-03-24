@@ -47,14 +47,25 @@ class SpeedIndicatorState extends ConsumerState<SpeedIndicator> {
         child: Stack(
           children: [
             randomNames$.when(
-              data: (data) => Positioned(
-                left: size.height *
-                    _calculateLeftFactor(data), // needle size .40 in borders
-                right: size.width * .5,
-                bottom: kToolbarHeight + 60,
-                child: SpeedIndicatorNeedle(
-                  angle: -_calculateAngle(data),
-                ),
+              data: (data) => TweenAnimationBuilder<double>(
+                duration: const Duration(milliseconds: 500),
+                tween: Tween<double>(begin: _calculateLeftFactor(data), end: _calculateLeftFactor(data)),
+                builder: (context, leftFactor, child) {
+                  return Positioned(
+                    left: size.height * leftFactor,
+                    right: size.width * .5,
+                    bottom: kToolbarHeight + 60,
+                    child: TweenAnimationBuilder<double>(
+                      duration: const Duration(milliseconds: 500),
+                      tween: Tween<double>(begin: -_calculateAngle(data), end: -_calculateAngle(data)),
+                      builder: (context, angle, child) {
+                        return SpeedIndicatorNeedle(
+                          angle: angle,
+                        );
+                      },
+                    ),
+                  );
+                },
               ),
               error: (error, stackTrace) => Text('Error $error'),
               loading: () => const Center(child: CircularProgressIndicator()),
