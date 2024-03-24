@@ -8,8 +8,14 @@ import 'package:speed_indicator_flutter/presentation/widgets/speed_numbers_paint
 import 'dart:math' as math;
 import 'package:speed_indicator_flutter/presentation/widgets/widgets.dart';
 
-class SpeedIndicator extends ConsumerWidget {
+class SpeedIndicator extends ConsumerStatefulWidget {
   const SpeedIndicator({super.key});
+
+  @override
+  SpeedIndicatorState createState() => SpeedIndicatorState();
+}
+
+class SpeedIndicatorState extends ConsumerState<SpeedIndicator> {
   final midValue = 110.0;
   final minFactor = 0.40;
   final maxFactor = 0.45;
@@ -32,7 +38,7 @@ class SpeedIndicator extends ConsumerWidget {
   }
 
   @override
-  Widget build(BuildContext context, ref) {
+  Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     const verticalPadding = 2.0;
     final randomNames$ = ref.watch(numbersStreamProvider);
